@@ -20,6 +20,46 @@ body {
 }
 
 
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  align-items: center;
+}
+
+.controls input[type="date"] {
+  background: #1a1a2e;
+  color: #e0e0e0;
+  border: 1px solid #3a3a5e;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.controls input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+#today-btn {
+  background: #1a1a3e;
+  color: #e0e0e0;
+  border: 1px solid #3a3a5e;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+#today-btn:hover {
+  background: #2a2a5e;
+}
+
+
 .content h1 {
   font-size: 1.8rem;
   margin-bottom: 20px;
@@ -27,11 +67,33 @@ body {
   line-height: 1.3;
 }
 
+.image-wrapper {
+  margin-bottom: 24px;
+}
+
 .content img {
   width: 100%;
   border-radius: 8px;
-  margin-bottom: 24px;
   display: block;
+}
+
+.hd-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #7b8cff;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hd-link:hover {
+  color: #a0adff;
+}
+
+.date-text {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 16px;
 }
 
 .content p {
@@ -39,7 +101,6 @@ body {
   line-height: 1.7;
   color: #b0b0b0;
 }
-
 
 .skeleton-title {
   height: 28px;
@@ -80,7 +141,7 @@ body {
   100% { background-position: -200% 0; }
 }
 
-
+/* Error State */
 .error-state {
   text-align: center;
   padding: 80px 20px;
@@ -106,7 +167,6 @@ body {
 .error-state button:hover {
   background: #2a2a5e;
 }
-
 
 .hidden {
   display: none !important;

@@ -9,6 +9,13 @@
 <body>
   <div class="container">
 
+    <!-- Controls -->
+    <div class="controls">
+      <input type="date" id="date-picker">
+      <button id="today-btn" onclick="goToToday()">Today</button>
+    </div>
+
+    <!-- Loading Skeleton -->
     <div id="skeleton" class="skeleton">
       <div class="skeleton-title"></div>
       <div class="skeleton-image"></div>
@@ -16,15 +23,20 @@
       <div class="skeleton-text short"></div>
     </div>
 
+    <!-- Error State -->
     <div id="error-state" class="error-state hidden">
       <p id="error-message">Something went wrong</p>
-      <button id="retry-btn" onclick="fetchAPOD()">Try Again</button>
+      <button onclick="fetchAPOD()">Try Again</button>
     </div>
 
-
+    <!-- Actual Content -->
     <div id="content" class="content hidden">
       <h1 id="title"></h1>
-      <img id="image" src="" alt="">
+      <div class="image-wrapper">
+        <img id="image" src="" alt="">
+        <a id="hd-link" href="#" target="_blank" class="hd-link hidden">View Full Resolution</a>
+      </div>
+      <p id="date-text" class="date-text"></p>
       <p id="explanation"></p>
     </div>
 
