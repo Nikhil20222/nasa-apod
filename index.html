@@ -1,20 +1,34 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NASA Astronomy Picture of the Day</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    
-    <div class="container">
-      <h1 id="title">Loading...</h1>
-      <img id="image" src="" alt="" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NASA Astronomy Picture of the Day</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <div id="skeleton" class="skeleton">
+      <div class="skeleton-title"></div>
+      <div class="skeleton-image"></div>
+      <div class="skeleton-text"></div>
+      <div class="skeleton-text short"></div>
+    </div>
+
+    <div id="error-state" class="error-state hidden">
+      <p id="error-message">Something went wrong</p>
+      <button id="retry-btn" onclick="fetchAPOD()">Try Again</button>
+    </div>
+
+
+    <div id="content" class="content hidden">
+      <h1 id="title"></h1>
+      <img id="image" src="" alt="">
       <p id="explanation"></p>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>
