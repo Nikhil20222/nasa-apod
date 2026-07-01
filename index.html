@@ -3,44 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NASA Astronomy Picture of the Day</title>
+  <title>NASA APOD</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <div id="stars"></div>
+
   <div class="container">
 
-    <!-- Controls -->
+    <header>
+      <div class="logo">NASA <span>·</span> APOD</div>
+      <div class="header-actions">
+        <button class="header-btn" onclick="randomAPOD()">Random</button>
+        <button class="header-btn" onclick="toggleFavorites()">
+          Favorites <span id="fav-count" class="fav-count">0</span>
+        </button>
+        <button class="header-btn" onclick="shareAPOD()">Share</button>
+      </div>
+    </header>
+
     <div class="controls">
       <input type="date" id="date-picker">
-      <button id="today-btn" onclick="goToToday()">Today</button>
+      <button class="header-btn" onclick="goToToday()">Today</button>
     </div>
 
-    <!-- Loading Skeleton -->
     <div id="skeleton" class="skeleton">
       <div class="skeleton-title"></div>
       <div class="skeleton-image"></div>
       <div class="skeleton-text"></div>
+      <div class="skeleton-text"></div>
       <div class="skeleton-text short"></div>
     </div>
 
-    <!-- Error State -->
     <div id="error-state" class="error-state hidden">
+      <div class="error-icon">✕</div>
       <p id="error-message">Something went wrong</p>
-      <button onclick="fetchAPOD()">Try Again</button>
+      <button class="header-btn" onclick="fetchAPOD(datePicker.value || null)">Try Again</button>
     </div>
 
-    <!-- Actual Content -->
-    <div id="content" class="content hidden">
-      <h1 id="title"></h1>
-      <div class="image-wrapper">
-        <img id="image" src="" alt="">
-        <a id="hd-link" href="#" target="_blank" class="hd-link hidden">View Full Resolution</a>
+  
+    <div id="content" class="content">
+      <div class="title-row">
+        <h1 id="title"></h1>
+        <button id="fav-btn" onclick="toggleFavorite()">♡</button>
+      </div>
+      <div class="media-wrapper">
+        <div id="image-loading" class="image-loading hidden">Loading image...</div>
+        <img id="image" src="" alt="" onload="onImageLoad()" onclick="openLightbox()">
+        <div id="video-container" class="video-container hidden"></div>
+        <a id="hd-link" href="#" target="_blank" class="hd-link hidden">View Full Resolution ↗</a>
       </div>
       <p id="date-text" class="date-text"></p>
       <p id="explanation"></p>
+      <p id="copyright" class="copyright hidden"></p>
     </div>
 
   </div>
+
+  <div id="lightbox" class="lightbox hidden" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+  </div>
+
+  <div id="fav-overlay" class="fav-overlay hidden" onclick="toggleFavorites()"></div>
+
+ 
+  <div id="fav-panel" class="fav-panel">
+    <div class="fav-panel-header">
+      <h2>Favorites</h2>
+      <button class="close-btn" onclick="toggleFavorites()">✕</button>
+    </div>
+    <div id="fav-list" class="fav-list"></div>
+    <p id="fav-empty" class="fav-empty">No favorites yet. Click ♡ to save.</p>
+  </div>
+
+  
+  <div id="toast" class="toast"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
