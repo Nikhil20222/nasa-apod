@@ -1,76 +1,33 @@
-# 🌌 NASA APOD Viewer
+# staring at space, one day at a time.
 
-A simple web app that displays NASA's **Astronomy Picture of the Day** using their public APOD API.
+a tiny website that pulls nasa's astronomy picture of the day and lets you scroll through decades of space photography. built with zero frameworks—just raw html, css, and js.
 
-I built this project to get some hands-on practice with APIs and asynchronous JavaScript while creating something that looks clean and fun to use. Every day, NASA publishes a new space image (or sometimes a video), and this website automatically fetches and displays it.
+## screenshot
 
-## 🚀 Features
+> add your screenshot here
 
-- 🌠 Fetches NASA's Astronomy Picture of the Day
-- 🖼️ Displays the image (or video), title, and description
-- ⚡ Shimmer loading effect while data is loading
-- ❌ Friendly error message with a retry button if something goes wrong
-- 📱 Responsive design for both desktop and mobile
+![screenshot](screenshot.png)
 
-## 🛠️ Built With
+## what's inside:
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Fetch API
-- NASA APOD API
+- browse any date back to june 1995 (the very first apod)
+- random button for when you just want to discover something
+- click any image to see it full screen
+- save your favorites to a slide-out panel (they stay even if you refresh)
+- smooth loading skeletons and a little starfield background
 
-## 📸 Preview
+## try it out:
 
-_Add a screenshot of your project here._
+1. grab a free api key from api.nasa.gov
 
-## ▶️ Running Locally
+2. paste it in `script.js` where it says `PASTE_YOUR_KEY_HERE`
 
-Since the project fetches data from an API, it needs to run on a local server.
+3. you can't just double-click `index.html` (browsers block fetch from `file://`). open it with vs code's live server, or run:
 
-### Option 1 (Recommended)
-
-Use the **Live Server** extension in VS Code.
-
-1. Install the Live Server extension.
-2. Right-click on `index.html`.
-3. Select **Open with Live Server**.
-
-## 📂 Project Structure
-
-```
-NASA-APOD-Viewer/
-│
-├── index.html
-├── style.css
-├── script.js
-└── README.md
+```bash
+python -m http.server 8000
 ```
 
-## 💡 What I Learned
+## why i built it:
 
-Working on this project helped me understand:
-
-- Fetching data from public APIs
-- Working with asynchronous JavaScript (`async` / `await`)
-- Handling loading and error states
-- Updating the DOM dynamically
-- Building responsive layouts with HTML and CSS
-
-## 🔮 Ideas for Future Updates
-
-- 📅 Browse APODs from previous dates
-- 🔍 View high-resolution images
-- 🎲 Random APOD button
-- ❤️ Save favorite images using localStorage
-- 🔎 Full-screen image viewer (lightbox)
-- 🌙 Multiple theme options
-
-## 🙏 Credits
-
-- NASA APOD API
-- Thanks to NASA for providing a free public API for developers and space enthusiasts.
-
----
-
-If you have any suggestions or ideas to improve this project, feel free to open an issue or contribute. Thanks for checking it out! 🚀
+wanted to learn how to consume apis in vanilla js without reaching for react. turns out you can make something that feels really smooth with just fetch, localStorage, and a few css animations.
