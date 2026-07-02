@@ -4,7 +4,6 @@ a tiny website that pulls nasa's astronomy picture of the day and lets you scrol
 
 ## screenshot
 
-> add your screenshot here
 
 ![screenshot](screenshot.png)
 
