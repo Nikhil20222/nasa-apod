@@ -15,17 +15,38 @@ a tiny website that pulls nasa's astronomy picture of the day and lets you scrol
 - save your favorites to a slide-out panel (they stay even if you refresh)
 - smooth loading skeletons and a little starfield background
 
-## try it out:
+## deploying to vercel
 
-1. grab a free api key from api.nasa.gov
+This repo is set up as a zero-config Vercel project: static files at the root, and `api/apod.js` becomes a serverless function automatically — no `vercel.json` needed.
 
-2. paste it in `script.js` where it says `PASTE_YOUR_KEY_HERE`
+1. push this repo to GitHub (without `.env` — it's gitignored, so it won't go up).
+2. import the repo at vercel.com → New Project.
+3. in the project's **Settings → Environment Variables**, add:
+   - `NASA_API_KEY` = your key from api.nasa.gov
+4. deploy. Vercel serves `index.html`/`style.css`/`script.js` as static assets and runs `api/apod.js` as a serverless function at `/api/apod`.
 
-3. you can't just double-click `index.html` (browsers block fetch from `file://`). open it with vs code's live server, or run:
+`server.js` is only used for local development (`npm start`) and is not used by Vercel — Vercel runs `api/apod.js` instead.
+
+## try it out (local dev):
+
+1. grab a free api key from api.nasa.gov (if you had an old key exposed publicly, generate a new one — old keys should be treated as compromised)
+
+2. copy `.env.example` to `.env` and paste your key in:
 
 ```bash
-python -m http.server 8000
+cp .env.example .env
 ```
+
+3. install dependencies and start the server:
+
+```bash
+npm install
+npm start
+```
+
+4. open http://localhost:8000
+
+**Why the extra step?** The API key now lives only in `.env` on the server and is never sent to the browser. The frontend calls a local `/api/apod` route, which the server uses to fetch from NASA on your behalf. `.env` is gitignored, so the key won't end up in your repo or git history.
 
 ## why i built it:
 

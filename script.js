@@ -1,5 +1,6 @@
-const API_KEY = "EmrqUgGfVz0H1duyHhAFWxLJOwlmB9rXXNfiRXBk";
-const BASE_URL = "https://api.nasa.gov/planetary/apod?api_key=" + API_KEY;
+// No API key here anymore — the browser calls our own server, which holds
+// the real NASA key in .env and forwards the request server-side.
+const BASE_URL = "/api/apod?ignore=1";
 
 const datePicker = document.getElementById("date-picker");
 const skeleton = document.getElementById("skeleton");
